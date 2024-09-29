@@ -1,6 +1,6 @@
 from UTN_Heroes_Dataset.utn_matrices import matriz_data_heroes
 from funciones import (
-    mostrar_menu, matriz_con_todos_los_heroes, mostrar_por_genero, mas_de_setentaycinco_en_poder, mas_de_cientosesenta_de_altura
+    mostrar_menu, matriz_con_todos_los_heroes, mostrar_por_genero, mas_de_setentaycinco_en_poder, mas_de_cientosesenta_de_altura,femenino_mas_60,masculino_menos_60,
 )
 from funciones import (
     play_sound, limpiar_pantalla
@@ -22,9 +22,9 @@ def utn_heroes(matriz_data_heroes):
             case 4:
                 mas_de_cientosesenta_de_altura(matriz_data_heroes)
             case 5:
-                pass
+                femenino_mas_60(matriz_data_heroes, "Femenino")
             case 6:
-                pass
+                masculino_menos_60(matriz_data_heroes,"Masculino")
             case 7:
                 pass
             case 8:
