@@ -101,7 +101,7 @@ def mas_de_cientosesenta_de_altura(matriz:list[list]) -> list:
             print(texto)
 
 #Ejercicio 5)
-def femenino_mas_60(matriz:list[list], genero: str) -> list:
+def femenino_mas_60(matriz:list[list], genero:str ,poder:int) -> list:
     """Esta funcion lo que hace es filtrar a los heroes femeninos mayores a 60 de poder
 
     Args:
@@ -115,11 +115,12 @@ def femenino_mas_60(matriz:list[list], genero: str) -> list:
     cantidad_filas = len(matriz)
     for indice in range(cantidad_columnas):
         texto = ""
-        if(matriz[3][indice] == genero and matriz[4][indice] <= 60 ):
+        if(matriz[3][indice] == genero and matriz[4][indice] >= poder ):
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
             print(texto)                
+
 
 #Ejercicio 6) 
 
@@ -145,27 +146,27 @@ def masculino_menos_60(matriz:list[list], genero: str) -> list:
 
 #Ejercicio 7)
 
-#def personajes_NoBinarios_10_y_50_inclusive( matriz:list[list],genero:str, poder:int) -> list:
-#    """Esta funcion lo que hace es filtrar a los heroes No-Binarios con poder entre 10 y 50 inclusive.
-#
-#    Args:
-#        matriz (list[list]):Recibr la matriz con todo sus datos 
-#        genero (str):Recibe el genero a filtrar
-#        poder_minimo(int): Recibe el valor de poder minimo a filtrar
-#        poder_max(int): Recibe el valor de poder maximo a filtrar    
-#    Returns:
-#        list:Devuelve la lista de No-Binarios con poder entre 10 y 50 inclusive
-#    """
-#    cantidad_columnas = len(matriz[0])
-#    cantidad_filas = len(matriz)
-#    for indice in range (cantidad_columnas):
-#        texto= ""
-#        if (matriz[3][indice] == genero and poder[4][indice] and poder[4][indice] <=50 ):
-#            for sub_indice in range(cantidad_filas):
-#                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
-#            texto=texto[0:-3]
-#            print(texto)
+def personajes_NoBinarios_10_y_50_inclusive( matriz:list[list],genero:str, poderMin:int, poderMax: int) -> list:
+    """Esta funcion lo que hace es filtrar a los heroes No-Binarios con poder entre 10 y 50 inclusive.
 
+    Args:
+        matriz (list[list]):Recibr la matriz con todo sus datos 
+        genero (str):Recibe el genero a filtrar
+        poder_minimo(int): Recibe el valor de poder minimo a filtrar
+        poder_max(int): Recibe el valor de poder maximo a filtrar    
+    Returns:
+        list:Devuelve la lista de No-Binarios con poder entre 10 y 50 inclusive
+    """
+    
+    cantidad_columnas = len(matriz[0])
+    cantidad_filas = len(matriz)
+    for indice in range (cantidad_columnas):
+        texto= ""
+        if (matriz[3][indice] == genero and ( matriz[4][indice] >= poderMin and matriz[4][indice] <= poderMax ) ):
+            for sub_indice in range(cantidad_filas):
+                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
+            texto=texto[0:-3]
+            print(texto)
 
 
 #ejercicio 8)
@@ -223,10 +224,10 @@ def orden_alfabetico_ascendente(matriz:list[list]):
     """Esta funcion ordena alfabeticamente ascendete a los heroes segun su nombre
 
     Args:
-       matriz (list[list]): Recibe la matriz con los heroes
+    matriz (list[list]): Recibe la matriz con los heroes
 
     Returns:
-       list: Devuelve la lista de heroes ordena alfabeticamente ascendente
+    list: Devuelve la lista de heroes ordena alfabeticamente ascendente
     """
     cantidad_columnas = len(matriz[0])
     cantidad_filas = len(matriz)
@@ -239,4 +240,69 @@ def orden_alfabetico_ascendente(matriz:list[list]):
                     matriz[filas][sub_indice] = matriz[filas][indice]
                     matriz[filas][indice] = auxiliar
     matriz_con_todos_los_heroes(matriz)
+
+
+#Ejercicio 11)
+def orden_alfabetico_descendete(matriz:list[list]) -> list:
+    """Esta funcion ordena alfabeticamente descendete a los heroes segun su nombre
+
+    Args:
+    matriz (list[list]): Recibe la matriz con los heroes
+
+    Returns:
+    list: Devuelve la lista de heroes ordena alfabeticamente ascendente
+    """
+    cantidad_columnas = len(matriz[0])
+    cantidad_filas = len(matriz)
+    auxiliar = ""
+    for indice in range (cantidad_columnas-1):
+        for sub_indice in range(indice + 1,cantidad_columnas):
+            if(matriz[0][indice] < matriz[0][sub_indice]):
+                for filas in range(cantidad_filas):
+                    auxiliar = matriz[filas][sub_indice]
+                    matriz[filas][sub_indice] = matriz[filas][indice]
+                    matriz[filas][indice] = auxiliar
+    matriz_con_todos_los_heroes(matriz)
+
+
+#ejercicio 12)
+def orden_heroes_altura_asc_des(matriz:list[list])-> list:
+    """Esta funcion ordena la altura de asc o desc
+
+    Args:
+        matiz (list[list]):Recibe la matriz con los heroes 
+
+    Returns:
+    list: Devuelve la lista ordenada dependiendo de lo que socilite el usuario
+    """
+    cantidad_columnas = len(matriz[0])
+    cantidad_filas = len(matriz)
+    auxiliares=""
+    ingreso_usuario=input("Como quiere ordenar la altura de los heroes: [ASC/DESC]").upper()
+    while ingreso_usuario !="ASC" and ingreso_usuario != "DESC":
+        ingreso_usuario=input("ERORR.Como quiere ordenar la altura de los heroes: [ASC/DESC]").upper()    
+    if ingreso_usuario == "ASC":
+        for indice in range (cantidad_columnas-1):
+            for sub_indice in range(indice + 1,cantidad_columnas):
+                if(matriz[5][indice] > matriz[5][sub_indice]):
+                    for filas in range(cantidad_filas):
+                        auxiliar = matriz[filas][sub_indice]
+                        matriz[filas][sub_indice] = matriz[filas][indice]
+                        matriz[filas][indice] = auxiliar
+        matriz_con_todos_los_heroes(matriz)    
+    else:    
+        for indice in range (cantidad_columnas-1):
+            for sub_indice in range(indice + 1,cantidad_columnas):
+                if(matriz[5][indice] < matriz[5][sub_indice]):
+                    for filas in range(cantidad_filas):
+                        auxiliar = matriz[filas][sub_indice]
+                        matriz[filas][sub_indice] = matriz[filas][indice]
+                        matriz[filas][indice] = auxiliar
+        matriz_con_todos_los_heroes(matriz)
+
+        
+
+
+
+
 
