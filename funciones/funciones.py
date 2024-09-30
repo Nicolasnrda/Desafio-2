@@ -3,7 +3,6 @@ from UTN_Heroes_Dataset.utn_matrices import matriz_data_heroes
 from UTN_Heroes_Dataset.utn_funciones.auxiliares import color_text
 
 
-
 def mostrar_heroe(matriz, sub_indice, indice) -> str:
     texto = ""
     texto_original = matriz[sub_indice][indice]
@@ -36,7 +35,7 @@ def matriz_con_todos_los_heroes(matriz):
             texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
 
         texto = texto[0:-3]
-        print(texto) 
+        print(color_text(texto,"Success")) 
 
 #Ejercicio 1 y 2
 def mostrar_por_genero(matriz:list[list], genero: str) -> list:
@@ -57,8 +56,7 @@ def mostrar_por_genero(matriz:list[list], genero: str) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)       
-
+            print(color_text(texto,"Success"))
 #Ejercicio 3)
 def mas_de_setentaycinco_en_poder(matriz:list[list]) -> list:
     """
@@ -77,7 +75,7 @@ def mas_de_setentaycinco_en_poder(matriz:list[list]) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)
+            print(color_text(texto,"Success"))
 
 #Ejercicio 4) 
 
@@ -98,7 +96,7 @@ def mas_de_cientosesenta_de_altura(matriz:list[list]) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)
+            print(color_text(texto,"Success"))
 
 #Ejercicio 5)
 def femenino_mas_60(matriz:list[list], genero:str ,poder:int) -> list:
@@ -119,7 +117,7 @@ def femenino_mas_60(matriz:list[list], genero:str ,poder:int) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)                
+            print(color_text(texto,"Success"))          
 
 
 #Ejercicio 6) 
@@ -142,7 +140,7 @@ def masculino_menos_60(matriz:list[list], genero: str) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)       
+            print(color_text(texto,"Success"))   
 
 #Ejercicio 7)
 
@@ -166,7 +164,7 @@ def personajes_NoBinarios_10_y_50_inclusive( matriz:list[list],genero:str, poder
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto=texto[0:-3]
-            print(texto)
+            print(color_text(texto,"Success"))
 
 
 #ejercicio 8)
@@ -192,7 +190,7 @@ def heroes_con_poder_menor(matriz: list[list]) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)      
+            print(color_text(texto,"Success"))
 
 #ejercicio 9)
 def heroes_con_maximo_altura(matriz: list[list]) -> list:
@@ -216,7 +214,7 @@ def heroes_con_maximo_altura(matriz: list[list]) -> list:
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
-            print(texto)    
+            print(color_text(texto,"Success")) 
     
 #Ejercicio 10)
 
