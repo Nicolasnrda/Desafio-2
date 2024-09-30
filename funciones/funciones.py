@@ -234,7 +234,7 @@ def orden_alfabetico_ascendente(matriz:list[list]):
     auxiliar = ""
     for indice in range (cantidad_columnas-1):
         for sub_indice in range(indice + 1,cantidad_columnas):
-            if(matriz[1][indice] > matriz[1][sub_indice]):
+            if(matriz[0][indice] > matriz[0][sub_indice]):
                 for filas in range(cantidad_filas):
                     auxiliar = matriz[filas][sub_indice]
                     matriz[filas][sub_indice] = matriz[filas][indice]
@@ -257,7 +257,7 @@ def orden_alfabetico_descendete(matriz:list[list]) -> list:
     auxiliar = ""
     for indice in range (cantidad_columnas-1):
         for sub_indice in range(indice + 1,cantidad_columnas):
-            if(matriz[0][indice] < matriz[0][sub_indice]):
+            if(matriz[2][indice] < matriz[2][sub_indice]):
                 for filas in range(cantidad_filas):
                     auxiliar = matriz[filas][sub_indice]
                     matriz[filas][sub_indice] = matriz[filas][indice]
@@ -278,9 +278,9 @@ def orden_heroes_altura_asc_des(matriz:list[list])-> list:
     cantidad_columnas = len(matriz[0])
     cantidad_filas = len(matriz)
     auxiliares=""
-    ingreso_usuario=input("Como quiere ordenar la altura de los heroes: [ASC/DESC]").upper()
+    ingreso_usuario=input("Como quiere ordenar la altura de los heroes: [ASC/DESC]: ").upper()
     while ingreso_usuario !="ASC" and ingreso_usuario != "DESC":
-        ingreso_usuario=input("ERORR.Como quiere ordenar la altura de los heroes: [ASC/DESC]").upper()    
+        ingreso_usuario=input("ERORR.Como quiere ordenar la altura de los heroes: [ASC/DESC]: ").upper()    
     if ingreso_usuario == "ASC":
         for indice in range (cantidad_columnas-1):
             for sub_indice in range(indice + 1,cantidad_columnas):
