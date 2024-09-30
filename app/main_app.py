@@ -1,7 +1,7 @@
 from UTN_Heroes_Dataset.utn_matrices import matriz_data_heroes
 from funciones import (
     mostrar_menu, matriz_con_todos_los_heroes, mostrar_por_genero, mas_de_setentaycinco_en_poder, 
-    mas_de_cientosesenta_de_altura,femenino_mas_60,masculino_menos_60, heroes_con_poder_menor,
+    mas_de_cientosesenta_de_altura,femenino_mas_60,masculino_menos_60, heroes_con_poder_menor,orden_alfabetico_ascendente,
     heroes_con_maximo_altura,personajes_NoBinarios_10_y_50_inclusive,orden_alfabetico_descendete,orden_heroes_altura_asc_des
 )
 from funciones import (
@@ -34,7 +34,7 @@ def utn_heroes(matriz_data_heroes):
             case 9:
                 heroes_con_maximo_altura(matriz_data_heroes)
             case 10:
-                pass
+                orden_alfabetico_ascendente(matriz_data_heroes)
             case 11:
                 orden_alfabetico_descendete(matriz_data_heroes)
             case 12:
