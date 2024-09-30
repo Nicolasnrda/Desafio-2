@@ -137,7 +137,7 @@ def masculino_menos_60(matriz:list[list], genero: str) -> list:
     cantidad_filas = len(matriz)
     for indice in range(cantidad_columnas):
         texto = ""
-        if(matriz[3][indice] == genero and matriz[4][indice] >= 60 ):
+        if(matriz[3][indice] == genero and matriz[4][indice] <= 60 ):
             for sub_indice in range(cantidad_filas):
                 texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
             texto = texto[0:-3]
@@ -167,80 +167,76 @@ def masculino_menos_60(matriz:list[list], genero: str) -> list:
 #            print(texto)
 
 
-##Ejercicio 8)
-#def minimo_poder(matriz:list[list]) -> list:
-#    """ Esta funcion lo que hace es buscar el poder minimo de poder y mostrar cuantos heroes tienen un poder igual al minimo
-#
-#    Args:
-#        matriz (list[list]):Recibe la matriz con todos sus datos 
-#        poder_minimo (int):Recibe el valor de poder minimo y busca cuantos heroes tiene el mismo poder 
-#
-#    Returns:
-#        list:Devuelve la lista con el poder minimo de poder y muestra cuantos heroes tienen un poder igual al minimo
-#    """
-#    cantidad_columnas = len(matriz[0])
-#    cantidad_filas = len(matriz)
-#    poder_minimo = min(min(fila) for fila in matriz)
-#    lista_menor_poder = []
-#    for indice in range (cantidad_columnas):
-#        contador_poder_minimo = []
-#        texto="" 
-#        if(matriz[4][indice] == poder_minimo):
-#            print(poder_minimo)
-#            contador_poder_minimo += matriz
-#            for sub_indice in range(cantidad_filas):
-#                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
-#            texto=texto[0:-3]
-#            print(texto)
-#minimo_poder(matriz_data_heroes)
-#
 
+#ejercicio 8)
+def heroes_con_poder_menor(matriz: list[list]) -> list:
+    """Esta funcion lo que hace es buscar en la matriz cuales son los heroes con menor poder 
 
+    Args:
+        matriz (list[list]): Recibe la matriz con los datos de los heroes
+
+    Returns:
+        list: Retorna la lista de los heroes con ese poder
+    """
+    cantidad_columnas = len(matriz[0])
+    cantidad_filas = len(matriz)
+    minimo_poder = None
+
+    for indice in range(cantidad_columnas):
+        if not minimo_poder or minimo_poder > matriz[4][indice]:
+            minimo_poder = matriz[4][indice]
+    for indice in range(cantidad_columnas):
+        texto = ""
+        if matriz[4][indice] == minimo_poder:
+            for sub_indice in range(cantidad_filas):
+                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
+            texto = texto[0:-3]
+            print(texto)      
+
+#ejercicio 9)
+def heroes_con_maximo_altura(matriz: list[list]) -> list:
+    """Esta funcion lo que hace es buscar en la matriz cuales son los heroes con mayor altura
+
+    Args:
+        matriz (list[list]): Recibe la matriz con los datos de los heroes
+
+    Returns:
+        list: Retorna la lista de los heroes con esa altura
+    """
+    cantidad_columnas = len(matriz[0])
+    cantidad_filas = len(matriz)
+    maxima_altura = None
+    for indice in range(cantidad_columnas):
+        if not maxima_altura or maxima_altura < matriz[5][indice]:
+            maxima_altura = matriz[5][indice]
+    for indice in range(cantidad_columnas):
+        texto = ""
+        if matriz[5][indice] == maxima_altura:
+            for sub_indice in range(cantidad_filas):
+                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
+            texto = texto[0:-3]
+            print(texto)    
+    
 #Ejercicio 10)
-#
-#def orden_alfabetico_ascendente(matriz:list[list]) -> list:
-#    """Esta funcion ordena alfabeticamente ascendete a los heroes segun su nombre
-#
-#    Args:
-#        matriz (list[list]): Recibe la matriz con los heroes
-#
-#    Returns:
-#        list: Devuelve la lista de heroes ordenda alfabeticamente ascendente
-#    """
-#    cantidad_columnas = len(matriz[0])
-#    cantidad_filas = len(matriz)
-#    for indice in range (cantidad_columnas):
-#        texto= ""
-#        if matriz.sort():
-#            for sub_indice in range(cantidad_filas):
-#                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
-#            texto=texto[0:-3]
-#            print(texto)
-#
 
+def orden_alfabetico_ascendente(matriz:list[list]):
+    """Esta funcion ordena alfabeticamente ascendete a los heroes segun su nombre
 
+    Args:
+       matriz (list[list]): Recibe la matriz con los heroes
 
-#def obtener_poder_minimo(matriz:list[list]) -> float:
-#    """
-#
-#    Args:
-#        lista_numerica (list): _description_ Una lista numerica la cual
-#        tiene que iterar para encontrar el numero mas grande
-#
-#    Returns:
-#        float: _description_ El numero mas grande de la lista, parseado a 
-#        flotante
-#    """
-#    minimo = None 
-#    cantidad_columnas = len(matriz[0])
-#    cantidad_filas = len(matriz)
-#    for indice in range(cantidad_columnas):
-#        texto= ""
-#        if cantidad_columnas[4] not minimo or minimo > indice:
-#            minimo = indice 
-#            for sub_indice in range(cantidad_filas):
-#                texto += f"{mostrar_heroe(matriz, sub_indice, indice)}"
-#            texto=texto[0:-3]
-#            print(texto)
-#
-#obtener_poder_minimo(matriz_data_heroes)
+    Returns:
+       list: Devuelve la lista de heroes ordena alfabeticamente ascendente
+    """
+    cantidad_columnas = len(matriz[0])
+    cantidad_filas = len(matriz)
+    auxiliar = ""
+    for indice in range (cantidad_columnas-1):
+        for sub_indice in range(indice + 1,cantidad_columnas):
+            if(matriz[0][indice] > matriz[0][sub_indice]):
+                for filas in range(cantidad_filas):
+                    auxiliar = matriz[filas][sub_indice]
+                    matriz[filas][sub_indice] = matriz[filas][indice]
+                    matriz[filas][indice] = auxiliar
+    matriz_con_todos_los_heroes(matriz)
+
